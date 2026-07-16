@@ -1,6 +1,6 @@
 # Secure Edge Meeting Transcription
 
-외부 클라우드로 회의 음성을 전송할 수 없는 기업 보안 환경을 가정해, **Jetson Orin Nano 단독으로 한국어 회의 음성을 전사하고 로컬 LLM으로 교정하는 PoC**입니다.
+외부 클라우드로 회의 음성을 전송할 수 없는 기업 보안 환경을 가정해, **[Jetson Orin Nano](https://developer.nvidia.com/ko-kr/blog/develop-ai-powered-robots-smart-vision-systems-and-more-with-nvidia-jetson-orin-nano-developer-kit/) 단독으로 한국어 회의 음성을 전사하고 로컬 LLM으로 교정하는 PoC**입니다.
 
 음성은 장비 내부에서만 처리합니다. `faster-whisper`가 음성을 한국어 텍스트로 변환하고, `llama-server`의 OpenAI 호환 API를 호출해 STT 오인식과 문장을 교정합니다. 확장 버전은 한 줄 요약, 결과 백업, 선택적 TTS도 제공합니다.
 
@@ -212,7 +212,7 @@ RTF = 입력 후 교정 출력 완료까지 걸린 시간 / 입력 음성 길이
 | B: Qwen/Qwen3.5-2B | **90.30%** | **0.31** |
 | C: kanana-nano-2.1b-instruct | 88.47% | 0.32 |
 
-정확도와 실시간성을 함께 고려해 후보 B인 `Qwen/Qwen3.5-2B`가 최종 모델로 선정되었습니다. Whisper를 `tiny`에서 `small`로 변경한 추가 실험에서는 정확도 98.9%, RTF 1.0098이 측정되어 정확도 향상과 처리 지연 간의 트레이드오프를 확인했습니다.
+정확도와 실시간성을 함께 고려해 후보 B인 `Qwen/Qwen3.5-2B`가 최종 모델로 선정되었습니다. Whisper를 `tiny`에서 `small`로 변경한 추가 실험에서는 정확도 98.9%, RTF 1.0098이 측정되어 정확도 향상과 처리 지연 간의 트레이드오프를 확인했습니다. 
 
 > 위 수치는 발표 자료의 해당 Jetson 환경에서 측정한 결과입니다. 하드웨어 상태, 모델 파일, 양자화, 발화 속도와 주변 소음에 따라 달라질 수 있습니다.
 
